@@ -1,14 +1,9 @@
 <!-- pages/playlist/playlist.wxml -->
-<swiper
- indicator-dots
- autoplay="{{true}}"
- interval="2000"
- duration="500"
->
+<swiper indicator-dots autoplay="{{true}}">
 	<block wx:for="{{swiperImgUrls}}">
 		<swiper-item class="" item-id="">
 			<image
-			 class="img"
+			 class=""
 			 src="{{item.url}}"
 			 mode="widthFix"
 			 lazy-load="false"
