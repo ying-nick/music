@@ -8,9 +8,9 @@ Component({
 			type: Object,
 		},
 	},
-	observices: {
+	observers: {
 		['playlist.playCount'](val) {
-			console.log(this)
+			// console.log(this)
 			this.setData({
 				count: this.tranNumber(val, 2),
 			})
