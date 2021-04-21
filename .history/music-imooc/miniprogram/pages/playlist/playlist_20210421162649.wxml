@@ -5,7 +5,7 @@
  interval="2000"
  duration="500"
 >
-	<block wx:for="{{swiperImgUrls}}" wx:key="*this">
+	<block wx:for="{{swiperImgUrls}}" wx:key="">
 		<swiper-item class="" item-id="">
 			<image
 			 class="img"
