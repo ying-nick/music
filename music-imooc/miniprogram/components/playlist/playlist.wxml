@@ -1,8 +1,8 @@
 <!-- components/playlist/playlist.wxml -->
 <view class="playlist-container">
 	<image src="{{playlist.picUrl}}" class="img" />
-	<text class="playlist-playcount" selectable="false" space="false" decode="false">{{count}}</text>
-	<text class="playlist-name" selectable="false" space="false" decode="false">
+	<text class="playlist-playcount" >{{count}}</text>
+	<text class="playlist-name" >
     {{playlist.name}}
   </text>
 </view>

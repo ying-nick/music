@@ -10,7 +10,7 @@ Component({
 	},
 	observices: {
 		['playlist.playCount'](val) {
-			console.log(val)
+			console.log(this)
 			this.setData({
 				count: this.tranNumber(val, 2),
 			})
