@@ -18,4 +18,11 @@
 		</swiper-item>
 	</block>
 </swiper>
+<view class="playlist-container">
+	<block wx:for="{{playlist}}">
+		<music-playlist playlist="{{item}}">
+
+		</music-playlist>
+	</block>
+</view>
 
