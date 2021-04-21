@@ -1,0 +1,14 @@
+<!-- pages/playlist/playlist.wxml -->
+<swiper>
+	<swiper-item class="" item-id="" wx:for="{{}}">
+		<image
+		 class=""
+		 src=""
+		 mode="aspectFit|aspectFill|widthFix"
+		 lazy-load="false"
+		 binderror=""
+		 bindload=""
+		></image>
+	</swiper-item>
+</swiper>
+

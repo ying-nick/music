@@ -1,12 +1,12 @@
 <!-- pages/playlist/playlist.wxml -->
-<swiper indicator-dots>
+<swiper>
 	<block wx:for="{{swiperImgUrls}}">
 		<swiper-item class="" item-id="">
 			<image
 			 class=""
 			 src="{{item.url}}"
 			 mode="widthFix"
-			 lazy-load="false"
+			 lazy-load="{{true}}"
 			 binderror=""
 			 bindload=""
 			></image>

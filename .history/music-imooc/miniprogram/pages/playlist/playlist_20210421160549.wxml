@@ -1,0 +1,8 @@
+<!--pages/playlist/playlist.wxml-->
+<swiper>
+	<swiper-item class="" item-id="">
+
+	</swiper-item>
+
+</swiper>
+

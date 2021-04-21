@@ -1,7 +1,7 @@
 <!-- pages/playlist/playlist.wxml -->
-<swiper indicator-dots>
-	<block wx:for="{{swiperImgUrls}}">
-		<swiper-item class="" item-id="">
+<swiper>
+	<block>
+		<swiper-item class="" item-id="" wx:for="{{swiperImgUrls}}">
 			<image
 			 class=""
 			 src="{{item.url}}"
