@@ -31,10 +31,10 @@
         "selectedIconPath": "images/publish-active.png"
       },
       {
-        "pagePath": "pages/profile/profile",
+        "pagePath": "pages/playlist/playlist",
         "text": "我的",
-        "iconPath": "images/mine.png",
-        "selectedIconPath": "images/mine-active.png"
+        "iconPath": "images/music.png",
+        "selectedIconPath": "images/music-active.png"
       }
     ]
   },

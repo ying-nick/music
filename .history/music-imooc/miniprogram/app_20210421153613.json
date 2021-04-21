@@ -23,18 +23,6 @@
         "text": "音乐",
         "iconPath": "images/music.png",
         "selectedIconPath": "images/music-active.png"
-      },
-      {
-        "pagePath": "pages/blog/blog",
-        "text": "发布",
-        "iconPath": "images/publish.png",
-        "selectedIconPath": "images/publish-active.png"
-      },
-      {
-        "pagePath": "pages/profile/profile",
-        "text": "我的",
-        "iconPath": "images/mine.png",
-        "selectedIconPath": "images/mine-active.png"
       }
     ]
   },
