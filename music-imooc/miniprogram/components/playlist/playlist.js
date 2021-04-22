@@ -8,6 +8,7 @@ Component({
 			type: Object,
 		},
 	},
+	//监控流量数字变化
 	observers: {
 		['playlist.playCount'](val) {
 			// console.log(this)
@@ -27,17 +28,20 @@ Component({
 	 * 组件的方法列表
 	 */
 	methods: {
+		//数字以万为单位
 		tranNumber(num, point) {
 			let numStr = num.toString().split('.')[0]
 			if (numStr.length < 6) {
 				return numStr
 			} else if (numStr.length >= 6 && numStr.length <= 8) {
+				//十万流量
 				let dnum = numStr.substring(
 					numStr.length - 4,
 					numStr.length - 4 + point
 				)
 				return parseFloat(parseInt(num / 10000) + '.' + dnum) + '万'
 			} else if (numStr.length >= 8) {
+				//亿流量
 				let dnum = numStr.substring(
 					numStr.length - 8,
 					numStr.length - 8 + point
