@@ -6,6 +6,7 @@ cloud.init()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+	// console.log(event)
 	const app = new tcbRouter({ event })
 	app.router('playlist', async (ctx, next) => {
 		ctx.body = await cloud
@@ -19,5 +20,6 @@ exports.main = async (event, context) => {
 				return res
 			})
 	})
+	app.router('musiclist', async (ctx, next) => {})
 	return app.serve()
 }

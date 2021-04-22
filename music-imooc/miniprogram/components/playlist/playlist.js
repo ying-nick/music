@@ -49,5 +49,13 @@ Component({
 				return parseFloat(parseInt(num / 100000000) + '.' + dnum) + '亿'
 			}
 		},
+		goToMusicList() {
+			wx.navigateTo({
+				url: `../../pages/musiclist/musiclist?playlistId=${this.properties.playlist.id}`,
+				success: (result) => {},
+				fail: () => {},
+				complete: () => {},
+			})
+		},
 	},
 })
