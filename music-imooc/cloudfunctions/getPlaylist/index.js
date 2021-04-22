@@ -10,7 +10,7 @@ const db = cloud.database()
 const axios = require('axios')
 const URL = 'https://apis.imooc.com/personalized?icode=078B30EF9E572491'
 const playlistCollection = db.collection('playlist')
-const maxLimit = 10
+const maxLimit = 100
 // 云函数入口函数
 exports.main = async (event, context) => {
 	//get只能获取100条信息
