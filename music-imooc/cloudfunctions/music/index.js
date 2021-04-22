@@ -10,7 +10,7 @@ exports.main = async (event, context) => {
 		.collection('playlist')
 		.skip(event.start)
 		.limit(event.count)
-		.orderBy('createTime', 'desc')
+		.orderBy('createTime', 'desc') //倒序排列
 		.get()
 		.then((res) => {
 			return res
