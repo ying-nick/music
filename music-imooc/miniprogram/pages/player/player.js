@@ -30,6 +30,9 @@ Page({
 	loadMusicDetail(id) {
 		//停止背景音乐
 		backAudioManager.stop()
+		this.setData({
+			isPlay: false,
+		})
 		let music = music_list[nowIndex]
 		// console.log(music)
 		wx.setNavigationBarTitle({
