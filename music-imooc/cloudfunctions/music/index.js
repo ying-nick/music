@@ -2,8 +2,10 @@
 const cloud = require('wx-server-sdk')
 //tcb路由
 const tcbRouter = require('tcb-router')
+const axios = require('axios')
 cloud.init()
-
+const URL = 'https://apis.imooc.com'
+const code = 'icode=078B30EF9E572491'
 // 云函数入口函数
 exports.main = async (event, context) => {
 	// console.log(event)
@@ -20,6 +22,11 @@ exports.main = async (event, context) => {
 				return res
 			})
 	})
-	app.router('musiclist', async (ctx, next) => {})
+	app.router('musiclist', async (ctx, next) => {
+		const res = await axios.get(
+			`${URL}/playlist/detail?id=${parseInt(event.playlistId)}&${code}`
+		)
+		ctx.body = res.data
+	})
 	return app.serve()
 }
