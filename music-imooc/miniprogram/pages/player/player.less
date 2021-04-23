@@ -46,6 +46,7 @@ page {
 					no-repeat center/contain;
 				transform: rotate(-15deg);
 				transform-origin: 24rpx 10rpx;
+				transition: transform 0.5s ease;
 			}
 			.player-img {
 				width: 368rpx;
@@ -57,11 +58,47 @@ page {
 				margin-top: -184rpx;
 				margin-left: -184rpx;
 			}
+			.rotation {
+				animation: rotation 12s linear infinite;
+				-moz-animation: rotation 12s linear infinite;
+				-webkit-animation: rotation 12s linear infinite;
+				-o-animation: rotation 12s linear infinite;
+			}
+			.rotate-puse {
+				animation-play-state: paused; //动画暂停
+			}
+			@keyframes rotation {
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(360deg);
+				}
+			}
+		}
+		.play.player-disc::after {
+			transform: rotate(0deg);
 		}
 	}
 	.control {
-		.icon {
+		position: absolute;
+		bottom: 8%;
+		left: 50%;
+		transform: translateX(-50%);
+		display: flex;
+		align-items: center;
+		.iconfont {
 			color: #fefefe;
+		}
+		.icon-shangyishou,
+		.icon-kuaijin {
+			font-size: 80rpx;
+		}
+		.icon-bofang,
+		.icon-yixianshi- {
+			color: #d43c43;
+			font-size: 120rpx;
+			margin: 0 50rpx;
 		}
 	}
 }

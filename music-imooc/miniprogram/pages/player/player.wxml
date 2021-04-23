@@ -2,13 +2,13 @@
 <view class="player-container" style="background:url({{picUrl}}) center/cover no-repeat"></view>
 <view class="player-mask"></view>
 <view class="player-info">
-	<view class="player-disc">
-		<image class="player-img" src="{{picUrl}}" />
+	<view class="player-disc {{isPlay?'play':''}}">
+		<image class="player-img rotation {{isPlay?'':'rotate-puse'}}" src="{{picUrl}}" />
 	</view>
 </view>
 <view class="control">
-	<text class="iconfont icon-shangyishou"></text>
-	<text class="iconfont icon-bofang"></text>
-	<text class="iconfont icon-kuaijin"></text>
+	<text class="iconfont icon-shangyishou" bind:tap='goPev'></text>
+	<text class="iconfont {{isPlay?'icon-yixianshi-':'icon-bofang'}}" bind:tap="togglePlay"></text>
+	<text class="iconfont icon-kuaijin" bind:tap='goNext'></text>
 </view>
 

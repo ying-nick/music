@@ -25,7 +25,13 @@ exports.main = async (event, context) => {
 	app.router('musiclist', async (ctx, next) => {
 		const res = await axios.get(
 			`${URL}/playlist/detail?id=${parseInt(event.playlistId)}&${code}`
-    )
+		)
+		ctx.body = res.data
+	})
+	app.router('musicUrl', async (ctx, next) => {
+		const res = await axios.get(
+			`${URL}/song/url?id=${event.id}&${code}`
+		)
 		ctx.body = res.data
 	})
 	return app.serve()
