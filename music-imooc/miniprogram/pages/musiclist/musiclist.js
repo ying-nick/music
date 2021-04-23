@@ -11,7 +11,11 @@ Page({
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function (options) {
+  onLoad: function (options) {
+    wx.showLoading({
+      title: "加油中...",
+      mask: true
+    });
 		// console.log(options)
 		wx.cloud
 			.callFunction({
@@ -31,8 +35,9 @@ Page({
 						coverImgUrl: pl.coverImgUrl,
 						name: pl.name,
 					},
-				})
-			})
+        })
+        wx.hideLoading();
+      })
 	},
 
 	/**
