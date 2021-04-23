@@ -27,7 +27,7 @@ Page({
 		//获取所选歌曲信息
 		this.loadMusicDetail(options.id)
 	},
-	loadMusicDetail(id) {
+	loadMusicDetail(id, chg) {
 		//停止背景音乐
 		backAudioManager.stop()
 		this.setData({
@@ -51,20 +51,27 @@ Page({
 			})
 			.then((res) => {
 				// console.log(res)
-				//背景音乐播放地址
-				backAudioManager.src = res.result.data[0].url
-				//音乐名称
-				backAudioManager.title = music.name
-				//音乐图片
-				backAudioManager.coverImgUrl = music.al.picUrl
-				//歌手
-				backAudioManager.singer = music.ar[0].name
-				//专辑名
-				backAudioManager.epname = music.al.name
-				this.setData({
-					isPlay: true,
-				})
-				wx.hideLoading()
+				//判断音频源是否为空
+				if (res.result.data[0].url != null) {
+					//背景音乐播放地址
+					backAudioManager.src = res.result.data[0].url
+					//音乐名称
+					backAudioManager.title = music.name
+					//音乐图片
+					backAudioManager.coverImgUrl = music.al.picUrl
+					//歌手
+					backAudioManager.singer = music.ar[0].name
+					//专辑名
+					backAudioManager.epname = music.al.name
+					this.setData({
+						isPlay: true,
+					})
+					wx.hideLoading()
+				} else if (chg == 1) {
+					this.goNext()
+				} else {
+					this.goPev()
+				}
 			})
 	},
 	togglePlay() {
@@ -91,6 +98,6 @@ Page({
 		if (nowIndex == music_list.length) {
 			nowIndex = 0
 		}
-		this.loadMusicDetail(music_list[nowIndex].id)
+		this.loadMusicDetail(music_list[nowIndex].id, 1)
 	},
 })
