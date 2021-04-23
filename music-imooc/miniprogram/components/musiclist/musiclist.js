@@ -10,14 +10,20 @@ Component({
 	/**
 	 * 组件的初始数据
 	 */
-	data: {},
+	data: {
+		musicID: -1,
+	},
 
 	/**
 	 * 组件的方法列表
 	 */
-  methods: {
-    onSelect () {
-      
-    }
-  },
+	methods: {
+		onSelect(e) {
+			// console.log(e.currentTarget.dataset.musicid)
+			//事件元,currentTarget绑定事件元素，target当前真正点击的元素
+			this.setData({
+				musicID: e.currentTarget.dataset.musicid,
+			})
+		},
+	},
 })
