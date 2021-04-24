@@ -8,7 +8,9 @@ Component({
 	/**
 	 * 组件的属性列表
 	 */
-	properties: {},
+  properties: {
+    isSame:Boolean
+  },
 
 	/**
 	 * 组件的初始数据
@@ -23,7 +25,10 @@ Component({
 	},
 	//组件生命周期函数
 	lifetimes: {
-		ready() {
+    ready () {
+      if (this.properties.isSame && this.data.showTime.totalTime == "00:00") {
+        this.setTime()
+      }
 			this.getMovableDis()
 			this.bindBgmEvent()
 		},
@@ -43,7 +48,7 @@ Component({
 				this.data.go =
 					(e.detail.x / (movableAreaWidth - movableViewWidth)) * 100
 				this.data.movableDis = e.detail.x
-				//子传父改变播放图标
+				//?子传父改变播放图标
 				this.triggerEvent('chg', {
 					isPlay: false,
 				})
@@ -63,7 +68,7 @@ Component({
 				movableDis: this.data.movableDis,
 				['showTime.currentTime']: `${curTimeFmt.min}:${curTimeFmt.sec}`,
 			})
-			//!子传父改变播放图标
+			//?子传父改变播放图标
 			this.triggerEvent('chg', {
 				isPlay: true,
 			})
@@ -84,11 +89,15 @@ Component({
 		},
 		bindBgmEvent() {
 			//播放事件
-			backAudioManager.onPlay(() => {})
+			backAudioManager.onPlay(() => {
+				this.triggerEvent('musicPlay')
+			})
 			//停止播放事件
 			backAudioManager.onStop(() => {})
 			//暂停事件
-			backAudioManager.onPause(() => {})
+			backAudioManager.onPause(() => {
+				this.triggerEvent('musicPause')
+			})
 			//监听进度条拖动，音频加载
 			backAudioManager.onWaiting(() => {})
 			//监听音乐进入可以播放状态
@@ -119,19 +128,18 @@ Component({
 						go: (curTime / duration) * 100,
 						['showTime.currentTime']: `${curTimeFmt.min}:${curTimeFmt.sec}`,
 					})
-          currentSec = curTime.toString().split('.')[0]
-          //!歌词时间联动同步，子组件传给另一个子组件
-          this.triggerEvent('timeUpdate', {
-            curTime
-          })
+					currentSec = curTime.toString().split('.')[0]
+					//?歌词时间联动同步，子组件传给另一个子组件
+					this.triggerEvent('timeUpdate', {
+						curTime,
+					})
 				}
 			})
 			//音乐结束时事件
-      backAudioManager.onEnded(() => {
-        //触发下一首，子传父事件,绑定的是bind冒号后面的名字，而不是等号后面
-        this.triggerEvent('musicEnd')
-
-      })
+			backAudioManager.onEnded(() => {
+				//?触发下一首，子传父事件,绑定的是bind冒号后面的名字，而不是等号后面
+				this.triggerEvent('musicEnd')
+			})
 			//出现错误
 			backAudioManager.onError((errMsg) => {
 				console.log(errMsg)

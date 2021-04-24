@@ -13,6 +13,15 @@ App({
 				traceUser: true,
 			})
 		}
-		this.globalData = {}
+		this.globalData = {
+			playing: -1,
+		}
+	},
+	//?传递正在播放的音乐id，作为全局变量
+	setPlaying(id) {
+		this.globalData.playing = id
+	},
+	getPlaying() {
+		return this.globalData.playing
 	},
 })

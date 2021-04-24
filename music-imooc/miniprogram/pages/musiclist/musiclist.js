@@ -6,7 +6,7 @@ Page({
 	data: {
 		musicList: [],
 		listInfo: {},
-		curMusic: -1,
+		curMusic: -1,//?上一个页面的参数改变
 	},
 
 	/**
@@ -44,7 +44,7 @@ Page({
 	setMusic(data) {
 		wx.setStorageSync('musiclist', data)
 	},
-	//显示返回键携带参数
+	//?显示返回键携带参数
 	onShow() {
 		// console.log(this.data.curMusic)
 	},
