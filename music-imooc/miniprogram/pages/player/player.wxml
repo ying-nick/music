@@ -3,17 +3,20 @@
 <view class="player-container" style="background:url({{picUrl}}) center/cover no-repeat"></view>
 <view class="player-mask"></view>
 <view class="player-info">
-  <view class="player-disc {{isPlay?'play':''}}">
-    <image class="player-img rotation {{isPlay?'':'rotate-puse'}}" src="{{picUrl}}" />
-  </view>
+	<view class="player-disc {{isPlay?'play':''}}" bind:tap="lyricShow" hidden="{{isLyricShow}}">
+		<image class="player-img rotation {{isPlay?'':'rotate-puse'}}" src="{{picUrl}}" />
+	</view>
 </view>
+<!-- 歌词 -->
+<music-lyric isLyricShow="{{!isLyricShow}}" bind:tap="lyricShow" lyric="{{lyric}}"></music-lyric>
 <!-- 进度条 -->
-<view class="progress-bar">
-  <music-progress bind:chg="chg" bind:musicEnd="goNext"></music-progress>
+<view class=" progress-bar">
+	<music-progress bind:chg="chg" bind:musicEnd="goNext"></music-progress>
 </view>
 <!-- 控制面板 -->
 <view class="control">
-  <text class="iconfont icon-shangyishou" bind:tap='goPev'></text>
-  <text class="iconfont {{isPlay?'icon-yixianshi-':'icon-bofang'}}" bind:tap="togglePlay"></text>
-  <text class="iconfont icon-kuaijin" bind:tap='goNext'></text>
+	<text class="iconfont icon-shangyishou" bind:tap='goPev'></text>
+	<text class="iconfont {{isPlay?'icon-yixianshi-':'icon-bofang'}}" bind:tap="togglePlay"></text>
+	<text class="iconfont icon-kuaijin" bind:tap='goNext'></text>
 </view>
+

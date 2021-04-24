@@ -1,0 +1,3 @@
+<!-- components/lyric/lyric.wxml -->
+<scroll-view hidden="{{isLyricShow}}">geci</scroll-view>
+

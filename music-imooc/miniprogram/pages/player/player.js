@@ -11,6 +11,8 @@ Page({
 		picUrl: '',
 		isPlay: false, //是否播放
 		mucID: 0,
+		isLyricShow: false,
+		lyric: '',
 	},
 
 	/**
@@ -71,7 +73,27 @@ Page({
 						isPlay: true,
 					})
 					wx.hideLoading()
-				} else if (chg == 1) {
+					//加载歌词
+					wx.cloud
+						.callFunction({
+							name: 'music',
+							data: {
+								id,
+								$url: 'lyric',
+							},
+						})
+						.then((res) => {
+							// console.log(res)
+							let lyric = '佛系歌词,别看了'
+							const lrc = res.result.lrc
+							if (lrc) {
+								lyric = lrc.lyric
+							}
+							this.setData({
+								lyric,
+							})
+						})
+				} else if (chg) {
 					this.goNext()
 				} else {
 					this.goPev()
@@ -110,7 +132,7 @@ Page({
 		this.setData({
 			mucID: music_list[nowIndex].id,
 		})
-		this.loadMusicDetail(music_list[nowIndex].id, 1)
+		this.loadMusicDetail(music_list[nowIndex].id, true)
 	},
 	chg(e) {
 		this.setData({
@@ -125,6 +147,12 @@ Page({
 		//直接调用上一个页面的setData()方法，把数据存到上一个页面中去
 		prevPage.setData({
 			curMusic: this.data.mucID,
+		})
+	},
+	//歌词
+	lyricShow() {
+		this.setData({
+			isLyricShow: !this.data.isLyricShow,
 		})
 	},
 })
