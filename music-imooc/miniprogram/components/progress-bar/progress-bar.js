@@ -79,18 +79,22 @@ Component({
 			const duration = backAudioManager.duration
 			// console.log(duration)
 			//格式化时间
+      const durationFmt = this.timeFormat(duration)
+      this.setData({
+
+      })
 		},
 		timeFormat(sec) {
 			const min = Math.floor(sec / 60)
 			sec = Math.floor(sec % 60)
 			return {
-				min,
-				sec,
+				min: this.parse0(min),
+				sec: this.parse0(sec),
 			}
-    },
-    //补0
-    parse (sec) {
-      
-    }
+		},
+		//补0
+		parse0(sec) {
+			return sec < 10 ? '0' + sec : sec
+		},
 	},
 })
