@@ -24,6 +24,8 @@ Component({
 	 */
 	data: {
 		lrcList: [],
+		nowLrc: 0, //当前歌词索引
+		scrollTop: 0, //滚动条滚动高度
 	},
 
 	/**
@@ -56,9 +58,27 @@ Component({
 			this.setData({
 				lrcList,
 			})
-		},
+    },
+    lifetimes: {
+      ready () {
+        
+      }
+    },
 		update(curTime) {
-			console.log(curTime)
+			// console.log(curTime)
+			let lrcList = this.data.lrcList
+			if (lrcList == 0) {
+				return
+			}
+			for (let i = 0, len = lrcList.length; i < len; i++) {
+				if (curTime <= lrcList[i].time) {
+					this.setData({
+						nowLrc: i - 1,
+						scrollTop: (i - 1),
+					})
+					break
+				}
+			}
 		},
 	},
 })
