@@ -51,7 +51,8 @@ Component({
 		},
 		goToMusicList() {
 			// console.log(this.properties.playlist.id)
-			wx.navigateTo({
+      wx.navigateTo({
+        //读取父传子数值
 				url: `../../pages/musiclist/musiclist?playlistId=${this.properties.playlist.id}`,
 			})
 		},

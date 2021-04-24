@@ -9,7 +9,7 @@
 </view>
 <!-- 进度条 -->
 <view class="progress-bar">
-  <music-progress></music-progress>
+  <music-progress bind:chg="chg" bind:musicEnd="goNext"></music-progress>
 </view>
 <!-- 控制面板 -->
 <view class="control">

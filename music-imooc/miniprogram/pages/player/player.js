@@ -10,6 +10,7 @@ Page({
 	data: {
 		picUrl: '',
 		isPlay: false, //是否播放
+		mucID: 0,
 	},
 
 	/**
@@ -24,6 +25,9 @@ Page({
 		nowIndex = options.index
 		//获取内存中的歌曲列表
 		music_list = wx.getStorageSync('musiclist')
+		this.setData({
+			mucID: options.id,
+		})
 		//获取所选歌曲信息
 		this.loadMusicDetail(options.id)
 	},
@@ -86,18 +90,41 @@ Page({
 			isPlay: !this.data.isPlay,
 		})
 	},
+	//上一首
 	goPev() {
 		nowIndex--
 		if (nowIndex < 0) {
 			nowIndex = music_list.length - 1
 		}
 		this.loadMusicDetail(music_list[nowIndex].id)
+		this.setData({
+			mucID: music_list[nowIndex].id,
+		})
 	},
+	//下一首
 	goNext() {
 		nowIndex++
 		if (nowIndex == music_list.length) {
 			nowIndex = 0
 		}
+		this.setData({
+			mucID: music_list[nowIndex].id,
+		})
 		this.loadMusicDetail(music_list[nowIndex].id, 1)
+	},
+	chg(e) {
+		this.setData({
+			isPlay: e.detail.isPlay,
+		})
+	},
+	//返回上一页
+	onUnload: function () {
+		var pages = getCurrentPages()
+		// console.log(pages)
+		var prevPage = pages[pages.length - 2] //上一个页面
+		//直接调用上一个页面的setData()方法，把数据存到上一个页面中去
+		prevPage.setData({
+			curMusic: this.data.mucID,
+		})
 	},
 })

@@ -4,14 +4,15 @@ Component({
 	 * 组件的属性列表
 	 */
 	properties: {
-		musicList: Array,
+    musicList: Array,
+    musicID: Number,
 	},
 
 	/**
 	 * 组件的初始数据
 	 */
 	data: {
-		musicID: -1,
+		// musicID: -1,
 	},
 
 	/**

@@ -6,6 +6,7 @@ Page({
 	data: {
 		musicList: [],
 		listInfo: {},
+		curMusic: -1,
 	},
 
 	/**
@@ -42,5 +43,9 @@ Page({
 	},
 	setMusic(data) {
 		wx.setStorageSync('musiclist', data)
+	},
+	//显示返回键携带参数
+	onShow() {
+		// console.log(this.data.curMusic)
 	},
 })

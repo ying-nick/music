@@ -9,7 +9,9 @@
 			 class="mova-view"
 			 direction="horizontal"
 			 damping="1000"
-			 x="movableDis"
+			 x="{{movableDis}}"
+			 bind:change="Tchange"
+			 bind:touchend="Tend"
 			></movable-view>
 		</movable-area>
 		<!-- 进度条 -->
