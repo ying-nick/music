@@ -1,3 +1,9 @@
 <!-- components/lyric/lyric.wxml -->
-<scroll-view hidden="{{isLyricShow}}">geci</scroll-view>
+<scroll-view hidden="{{isLyricShow}}" class="lrc-scroll">
+	<view class="lrc-panel">
+		<block wx:for="{{lrcList}}" wx:key="*this">
+			<view class="lyric">{{item.lrc}}</view>
+		</block>
+	</view>
+</scroll-view>
 
