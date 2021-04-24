@@ -1,4 +1,5 @@
 // components/lyric/lyric.js
+let lyricHeight = 0
 Component({
 	/**
 	 * 组件的属性列表
@@ -15,8 +16,20 @@ Component({
 		//监听歌词
 		lyric(lrc) {
 			// console.log(lrc)
-			//转化歌词
-			this.parseLrc(lrc)
+			if (lrc == '佛系歌词，被砍了') {
+				this.setData({
+					lrcList: [
+						{
+							lrc,
+							time: 0,
+						},
+					],
+					nowLrc: -1,
+				})
+			} else {
+				//转化歌词
+				this.parseLrc(lrc)
+			}
 		},
 	},
 	/**
@@ -27,7 +40,19 @@ Component({
 		nowLrc: 0, //当前歌词索引
 		scrollTop: 0, //滚动条滚动高度
 	},
-
+	lifetimes: {
+		ready() {
+			//获取当前手机信息
+			wx.getSystemInfo({
+				success(res) {
+					// console.log(res)
+					//求出给个rpx大小，并算出当前高度px
+					lyricHeight = (res.screenWidth / 750) * 64
+					// console.log(lyricHeight)
+				},
+			})
+		},
+	},
 	/**
 	 * 组件的方法列表
 	 */
@@ -58,27 +83,33 @@ Component({
 			this.setData({
 				lrcList,
 			})
-    },
-    lifetimes: {
-      ready () {
-        
-      }
-    },
+		},
+
 		update(curTime) {
 			// console.log(curTime)
 			let lrcList = this.data.lrcList
 			if (lrcList == 0) {
 				return
 			}
+			//歌曲时间超过歌词时间
+			if (curTime > lrcList[lrcList.length - 1].time) {
+				if (this.data.nowLrc != -1) {
+					this.setData({
+						nowLrc: -1,
+						scrollTop: lrcList.length * lyricHeight,
+					})
+				}
+			}
 			for (let i = 0, len = lrcList.length; i < len; i++) {
 				if (curTime <= lrcList[i].time) {
 					this.setData({
 						nowLrc: i - 1,
-						scrollTop: (i - 1),
+						scrollTop: (i - 1) * lyricHeight,
 					})
 					break
 				}
 			}
+			// console.log(this.data.scrollTop)
 		},
 	},
 })

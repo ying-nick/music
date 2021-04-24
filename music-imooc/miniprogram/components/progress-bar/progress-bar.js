@@ -63,7 +63,7 @@ Component({
 				movableDis: this.data.movableDis,
 				['showTime.currentTime']: `${curTimeFmt.min}:${curTimeFmt.sec}`,
 			})
-			//子传父改变播放图标
+			//!子传父改变播放图标
 			this.triggerEvent('chg', {
 				isPlay: true,
 			})
@@ -120,7 +120,7 @@ Component({
 						['showTime.currentTime']: `${curTimeFmt.min}:${curTimeFmt.sec}`,
 					})
           currentSec = curTime.toString().split('.')[0]
-          //歌词时间联动同步
+          //!歌词时间联动同步，子组件传给另一个子组件
           this.triggerEvent('timeUpdate', {
             curTime
           })

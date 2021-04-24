@@ -84,7 +84,7 @@ Page({
 						})
 						.then((res) => {
 							// console.log(res)
-							let lyric = '佛系歌词,别看了'
+							let lyric = '佛系歌词，被砍了'
 							const lrc = res.result.lrc
 							if (lrc) {
 								lyric = lrc.lyric
