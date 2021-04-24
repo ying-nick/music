@@ -155,4 +155,8 @@ Page({
 			isLyricShow: !this.data.isLyricShow,
 		})
 	},
+	timeUpdate(e) {
+		//选中子组件,调用子组件方法传参
+		this.selectComponent('.lyric').update(e.detail.curTime)
+	},
 })

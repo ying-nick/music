@@ -8,10 +8,15 @@
 	</view>
 </view>
 <!-- 歌词 -->
-<music-lyric isLyricShow="{{!isLyricShow}}" bind:tap="lyricShow" lyric="{{lyric}}"></music-lyric>
+<music-lyric
+ class="lyric"
+ isLyricShow="{{!isLyricShow}}"
+ bind:tap="lyricShow"
+ lyric="{{lyric}}"
+></music-lyric>
 <!-- 进度条 -->
 <view class=" progress-bar">
-	<music-progress bind:chg="chg" bind:musicEnd="goNext"></music-progress>
+	<music-progress bind:chg="chg" bind:musicEnd="goNext" bind:timeUpdate="timeUpdate"></music-progress>
 </view>
 <!-- 控制面板 -->
 <view class="control">

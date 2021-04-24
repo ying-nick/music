@@ -119,7 +119,11 @@ Component({
 						go: (curTime / duration) * 100,
 						['showTime.currentTime']: `${curTimeFmt.min}:${curTimeFmt.sec}`,
 					})
-					currentSec = curTime.toString().split('.')[0]
+          currentSec = curTime.toString().split('.')[0]
+          //歌词时间联动同步
+          this.triggerEvent('timeUpdate', {
+            curTime
+          })
 				}
 			})
 			//音乐结束时事件

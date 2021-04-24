@@ -57,5 +57,8 @@ Component({
 				lrcList,
 			})
 		},
+		update(curTime) {
+			console.log(curTime)
+		},
 	},
 })
