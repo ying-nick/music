@@ -23,7 +23,7 @@ Component({
 			// console.log(e.currentTarget.dataset.musicid)
 			const ds = e.currentTarget.dataset
 			const id = ds.musicid
-			//事件元,currentTarget绑定事件元素，target当前真正点击的元素
+			//?事件元,currentTarget绑定事件元素，target当前真正点击的元素
 			this.setData({
 				musicID: id,
 			})

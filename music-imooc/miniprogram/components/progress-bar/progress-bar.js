@@ -8,9 +8,9 @@ Component({
 	/**
 	 * 组件的属性列表
 	 */
-  properties: {
-    isSame:Boolean
-  },
+	properties: {
+		isSame: Boolean,
+	},
 
 	/**
 	 * 组件的初始数据
@@ -25,10 +25,11 @@ Component({
 	},
 	//组件生命周期函数
 	lifetimes: {
-    ready () {
-      if (this.properties.isSame && this.data.showTime.totalTime == "00:00") {
-        this.setTime()
-      }
+		ready() {
+			//?判断是否为同一首歌
+			if (this.properties.isSame && this.data.showTime.totalTime == '00:00') {
+				this.setTime()
+			}
 			this.getMovableDis()
 			this.bindBgmEvent()
 		},
