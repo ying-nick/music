@@ -10,7 +10,7 @@ Component({
 		},
 	},
 	//?接收父传给子的class样式，名字为自己起的名字
-	externalClasses: ['iconfont', 'sousuo'],
+	externalClasses: ['sousuo', 'ic'],
 
 	/**
 	 * 组件的初始数据
