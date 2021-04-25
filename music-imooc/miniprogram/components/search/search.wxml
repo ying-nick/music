@@ -1,2 +1,12 @@
-<!--components/search/search.wxml-->
-<text>components/search/search.wxml</text>
+<!-- components/search/search.wxml -->
+<view class="container">
+	<i class="iconfont icon-fabu1"></i>
+	<input
+	 type="text"
+	 placeholder="{{placeholder}}"
+	 placeholder-class="holder"
+	 class="bar"
+	/>
+	<button class="search">搜索</button>
+</view>
+

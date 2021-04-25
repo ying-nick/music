@@ -5,7 +5,10 @@
 		<view class="publish-container" bind:tap="onPublish">
 			<i class="iconfont icon-fabu"></i>
 		</view>
-		<view class="search-container"></view>
+		<view class="search-container">
+			<!-- 传全局样式给组件 -->
+			<blog-search iconfont="iconfont" sousuo="icon-fabu1"></blog-search>
+		</view>
 	</view>
 </view>
 
