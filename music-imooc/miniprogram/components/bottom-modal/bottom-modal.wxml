@@ -1,7 +1,0 @@
-<!-- components/bottom-modal/bottom-modal.wxml -->
-<view class="modal">
-	<view class="panel">
-		<i class="iconfont icon-icon"></i>
-	</view>
-</view>
-
