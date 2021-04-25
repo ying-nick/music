@@ -79,5 +79,3 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
-#过滤less
-*.less
