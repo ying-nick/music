@@ -1,7 +1,7 @@
 <!-- components/bottom-modal/bottom-modal.wxml -->
 <view class="modal">
 	<view class="panel">
-		<i class="iconfont icon-icon"></i>
+		<i class="iconfont icon-guanbi"></i>
 	</view>
 </view>
 
