@@ -1,6 +1,7 @@
 {
 	"usingComponents": {
-		"blog-search": "/components/search/search"
+    "blog-search": "/components/search/search",
+    "blog-modal": "/components/bottom-modal//bottom-modal"
 	},
 	"navigationBarTitleText": "Discover"
 }

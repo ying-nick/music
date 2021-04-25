@@ -1,6 +1,7 @@
 <!-- components/search/search.wxml -->
 <view class="container">
-	<i class="iconfont icon-fabu1"></i>
+	<!-- 外面传过来的全局样式无法在组件内定义样式 -->
+	<i class="ic sousuo find"></i>
 	<input
 	 type="text"
 	 placeholder="{{placeholder}}"

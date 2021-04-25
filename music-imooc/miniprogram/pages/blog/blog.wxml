@@ -10,5 +10,6 @@
 			<blog-search ic="iconfont" sousuo="icon-fabu1"></blog-search>
 		</view>
 	</view>
+	<blog-modal></blog-modal>
 </view>
 
