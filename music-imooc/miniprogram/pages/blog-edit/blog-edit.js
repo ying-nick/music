@@ -1,6 +1,7 @@
 // pages/blog-edit/blog-edit.js
 //输入文字最大的个数
 const maxNum = 140
+const maxImg = 9
 Page({
 	/**
 	 * 页面的初始数据
@@ -8,6 +9,9 @@ Page({
 	data: {
 		//输入的文字个数
 		wordsNum: 0,
+		foot: 0,
+		imgs: [],
+		photo: true,
 	},
 
 	/**
@@ -26,38 +30,48 @@ Page({
 			wordsNum,
 		})
 	},
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {},
+	onFocus(e) {
+		this.setData({
+			foot: e.detail.height,
+		})
+	},
+	onBlur() {
+		this.setData({
+			foot: 0,
+		})
+	},
+	del(e) {
+		this.data.imgs.splice(e.currentTarget.dataset.index, 1)
+		this.setData({
+			imgs: this.data.imgs,
+		})
+		if (this.data.imgs.length == maxImg - 1) {
+			this.setData({
+				photo: true,
+			})
+		}
+	},
+	big(e) {
+		wx.previewImage({
+			current: e.currentTarget.dataset.src,
+			urls: this.data.imgs,
+		})
+	},
+	chooseImg() {
+		let max = maxImg - this.data.imgs.length
+		wx.chooseImage({
+			count: max,
+			sizeType: ['original', 'compressed'],
+			sourceType: ['album', 'camera'],
+			success: (res) => {
+				this.setData({
+					imgs: [...this.data.imgs, ...res.tempFilePaths],
+				})
+				max = maxImg - this.data.imgs.length
+				this.setData({
+					photo: max <= 0 ? false : true,
+				})
+			},
+		})
+	},
 })

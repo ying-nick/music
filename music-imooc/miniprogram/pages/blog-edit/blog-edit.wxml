@@ -1,22 +1,36 @@
 <!-- pages/blog-edit/blog-edit.wxml -->
 <view class="container">
-	<!-- 原生组件层级最高,原生组件不允许bind有：号 -->
+	<!-- 原生组件层级最高,原生组件不允许bind有：号 自动获取焦点 -->
 	<textarea
 	 class="content"
 	 placeholder="分享新鲜事..."
 	 bindinput="onInput"
 	 maxlength="140"
+	 auto-focus="{{true}}"
+	 bindfocus="onFocus"
+	 bindblur="onBlur"
 	></textarea>
 	<view class="image-list">
 		<!-- 显示图片 -->
-
+		<block wx:for="{{imgs}}" wx:key="*this">
+			<view class="image-wrap">
+				<image
+				 class="image"
+				 src="{{item}}"
+				 mode="aspectFill"
+				 bind:tap="big"
+				 data-src="{{item}}"
+				></image>
+				<i class="iconfont icon-icon" bind:tap="del" data-index="{{index}}"></i>
+			</view>
+		</block>
 		<!-- 选择图片 -->
-		<view class="image-wrap selectphoto">
+		<view class="image-wrap selectphoto" hidden="{{!photo}}" bind:tap="chooseImg">
 			<i class="iconfont icon-yuanjiaoshizijiahao1"></i>
 		</view>
 	</view>
 </view>
-<view class="footer">
+<view class="footer" style="bottom:{{foot}}px">
 	<text class="words-num">{{wordsNum}}</text>
 	<button class="send-btn">发布</button>
 </view>
