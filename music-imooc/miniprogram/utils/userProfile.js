@@ -4,7 +4,7 @@ function getUserProfile() {
 		success: function (res) {
 			var userInfo = res.userInfo
 			// console.log('userInfo==>', userInfo)
-			wx.setStorageSync('storage_info', 'ok') //本地标记
+			wx.setStorageSync('storage_info', 'musicOk') //本地标记
 			//下面将userInfo存入服务器中的用户个人资料
 			//...
 		},
