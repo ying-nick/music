@@ -1,7 +1,7 @@
 <!-- components/login/login.wxml -->
 <blog-modal modalShow="{{modalShow}}">
 	<view slot="modal-content">
-		<button>获取微信授权信息</button>
+		<button class="login">获取微信授权信息</button>
 	</view>
 </blog-modal>
 
