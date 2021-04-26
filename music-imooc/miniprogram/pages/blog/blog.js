@@ -15,8 +15,16 @@ Page({
 	//发布功能
 	onPublish() {
 		this.setData({
-      modalShow: true,
-    })
-	
+			modalShow: true,
+		})
+	},
+	loginsuccess(e) {
+		console.log(e)
+	},
+	loginfail() {
+		wx.showModal({
+			title: 'Warn',
+			content: 'no授权，no发布',
+		})
 	},
 })
