@@ -13,3 +13,6 @@ function getUserProfile() {
 		},
 	})
 }
+module.exports = {
+	getUserProfile,
+}
