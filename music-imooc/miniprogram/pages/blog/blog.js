@@ -18,10 +18,15 @@ Page({
 			modalShow: true,
 		})
 	},
+	//?用户信息获取成功
 	loginsuccess(e) {
-    console.log(e)
-    
+		// console.log(e)
+		const detail = e.detail
+		wx.navigateTo({
+			url: `../blog-edit/blog-edit?name=${detail.nickName}&avaUrl=${detail.avatarUrl}`,
+		})
 	},
+	//?用户信息获取失败
 	loginfail() {
 		wx.showModal({
 			title: 'Warn',
