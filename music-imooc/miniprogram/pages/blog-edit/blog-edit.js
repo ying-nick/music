@@ -52,13 +52,37 @@ Page({
 		}
 	},
 	big(e) {
+		//?放大图片
 		wx.previewImage({
 			current: e.currentTarget.dataset.src,
 			urls: this.data.imgs,
 		})
 	},
+	send() {
+		//?发布，云数据库
+		//?数据库：内容，图片fileId，openId，昵称，头像，时间
+		//?图片->云存储fileId，云文件ID
+		//图片上传
+		for (let i = 0; i < this.data.imgs.length; i++) {
+			//文件扩展名
+			let item = this.data.imgs[i]
+			let suffix = /\.\w+$/.exec(item)[0]
+			wx.cloud.uploadFile({
+				cloudPath:
+					'blog/' + Date.now() + '-' + Math.random() * 1000000 + suffix,
+				filePath: item,
+				success: (res) => {
+					console.log(res)
+				},
+				fail: (err) => {
+					console.log(err)
+				},
+			})
+		}
+	},
 	chooseImg() {
 		let max = maxImg - this.data.imgs.length
+		//?选择图片，添加
 		wx.chooseImage({
 			count: max,
 			sizeType: ['original', 'compressed'],
