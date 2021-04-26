@@ -1,15 +1,16 @@
 function getUserProfile() {
 	wx.getUserProfile({
-		desc: '用于完善个人资料',
-		success: function (res) {
-			var userInfo = res.userInfo
-			// console.log('userInfo==>', userInfo)
-			wx.setStorageSync('storage_info', 'musicOk') //本地标记
-			//下面将userInfo存入服务器中的用户个人资料
-			//...
+		desc: '用于发布信息时获取头像与昵称',
+		success: (res) => {
+			console.log(res)
+			this.setData({
+				modalShow: false,
+			})
+			this.triggerEvent('loginsuccess', res.userInfo)
 		},
-		fail() {
-			console.log('用户拒绝授权')
+		fail: (err) => {
+			console.log(err)
+			this.triggerEvent('loginfail')
 		},
 	})
 }

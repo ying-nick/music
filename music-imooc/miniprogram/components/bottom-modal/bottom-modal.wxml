@@ -2,8 +2,7 @@
 <view class="modal" hidden="{{!modalShow}}">
 	<view class="panel">
 		<i class="iconfont icon-guanbi" bind:tap="close"></i>
-		<slot name="slot1"></slot>
-		<slot name="slot2"></slot>
+		<slot name="modal-content"></slot>
 	</view>
 </view>
 

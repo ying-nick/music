@@ -1,4 +1,5 @@
 // pages/blog/blog.js
+// import {getUserProfile} from "../../utils/userProfile"
 Page({
 	/**
 	 * 页面的初始数据
@@ -13,12 +14,9 @@ Page({
 	onLoad: function (options) {},
 	//发布功能
 	onPublish() {
-		wx.getUserProfile({
-			desc: '获取信息',
-			success: (res) => {
-				console.log(res)
-			},
-		})
+		this.setData({
+      modalShow: true,
+    })
 	
 	},
 })

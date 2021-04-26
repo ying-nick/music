@@ -10,10 +10,8 @@
 			<blog-search ic="iconfont" sousuo="icon-fabu1"></blog-search>
 		</view>
 	</view>
-	<blog-modal modalShow="{{modalShow}}">
-		<view>
-			<view></view>
-		</view>
-	</blog-modal>
+	<blog-login modalShow="{{modalShow}}">
+
+	</blog-login>
 </view>
 
