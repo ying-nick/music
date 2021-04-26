@@ -27,6 +27,13 @@
         {
           "name": "blog",
           "pathName": "pages/blog/blog",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "blog-edit",
+          "pathName": "pages/blog-edit/blog-edit",
+          "query": "name:=&avaUrl=https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eo7…khtAVq7PCMAUJFfTM5XDbcffbImCB64UMnLUJu3WkOzZQ/132",
           "scene": null
         }
       ]
