@@ -27,7 +27,8 @@ Page({
 		})
 	},
 	//?用户信息获取失败
-	loginfail() {
+  loginfail () {
+    //?模态框提示用户
 		wx.showModal({
 			title: 'Warn',
 			content: 'no授权，no发布',
