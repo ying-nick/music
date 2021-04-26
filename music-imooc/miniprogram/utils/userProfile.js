@@ -10,7 +10,7 @@ function getUserProfile(_this) {
 			_this.triggerEvent('loginsuccess', res.userInfo)
 		},
 		fail: (err) => {
-			console.log('用户拒绝授权')
+			// console.log('用户拒绝授权')
 			_this.setData({
 				modalShow: false,
 			})

@@ -31,6 +31,19 @@ Page({
 		wx.showModal({
 			title: 'Warn',
 			content: 'no授权，no发布',
+			success: (res) => {
+				if (res.confirm) {
+					// console.log('用户点击确定')
+					this.setData({
+						modalShow: true,
+					})
+				} else if (res.cancel) {
+					// console.log('用户点击取消')
+					this.setData({
+						modalShow: false,
+					})
+				}
+			},
 		})
 	},
 })
