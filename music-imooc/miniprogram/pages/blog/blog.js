@@ -19,7 +19,8 @@ Page({
 		})
 	},
 	loginsuccess(e) {
-		console.log(e)
+    console.log(e)
+    
 	},
 	loginfail() {
 		wx.showModal({
