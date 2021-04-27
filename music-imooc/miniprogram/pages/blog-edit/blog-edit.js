@@ -78,7 +78,8 @@ Page({
 					console.log(err)
 				},
 			})
-		}
+    }
+    //存入云数据库
 	},
 	chooseImg() {
 		let max = maxImg - this.data.imgs.length
