@@ -80,6 +80,10 @@ Page({
 			})
 			return
 		}
+		wx.showLoading({
+			title: '正在努力发布中',
+			mask: true,
+		})
 		let promiseArr = []
 		//fileId
 		let fileIds = []
@@ -109,14 +113,37 @@ Page({
 		}
 		//存入云数据库
 		Promise.all(promiseArr).then((res) => {
-			db.collection('blog').add({
-				data: {
-					...userInfo,
-					content,
-					img: fileIds,
-					createTime: db.serverDate(), //获取服务端时间
-				},
-			})
+			db.collection('blog')
+				.add({
+					data: {
+						...userInfo,
+						content,
+						img: fileIds,
+						createTime: db.serverDate(), //获取服务端时间
+					},
+				})
+				.then((res) => {
+					//隐藏加载框
+					wx.hideLoading()
+					//发布成功提醒
+					wx.showToast({
+						title: '朕做到了',
+						icon: 'none',
+						image: '../../images/success.png',
+						duration: 1500,
+						mask: true,
+					})
+				})
+				.catch((err) => {
+					wx.hideLoading()
+					wx.showToast({
+						title: '臣妾做不到,要不再试试',
+						icon: 'none',
+						image: '../../images/cry.png',
+						duration: 1500,
+						mask: true,
+					})
+				})
 		})
 	},
 	chooseImg() {
