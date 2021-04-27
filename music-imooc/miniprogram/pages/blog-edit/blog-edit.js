@@ -135,10 +135,12 @@ Page({
 						success: (result) => {},
 						fail: () => {},
 						complete: () => {
-							//返回博客页面并刷新
-							wx.navigateBack({
-								delta: 1,
-							})
+							setTimeout(() => {
+								//返回博客页面并刷新
+								wx.navigateBack({
+									delta: 1,
+								})
+							}, 500)
 						},
 					})
 				})

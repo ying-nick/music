@@ -78,6 +78,7 @@ Page({
 					if (!this.data.isSame) {
 						//背景音乐播放地址
 						backAudioManager.src = res.result.data[0].url
+						// console.log(res.result.data[0].url)
 						//音乐名称
 						backAudioManager.title = music.name
 						//音乐图片
