@@ -6,18 +6,39 @@ Page({
 	 */
 	data: {
 		modalShow: false,
+		blogList: [],
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function (options) {},
+	onLoad: function (options) {
+		this.loadBlogList()
+	},
 	//发布功能
 	onPublish() {
 		this.setData({
 			modalShow: true,
 		})
 	},
+	//加载博客列表
+	loadBlogList() {
+		wx.cloud
+			.callFunction({
+				name: 'blog',
+				data: {
+					$url: 'list',
+					start: 0,
+					count: 10,
+				},
+			})
+			.then((res) => {
+				this.setData({
+					blogList: [...this.data.blogList, ...res.result],
+				})
+			})
+	},
+
 	//?用户信息获取成功
 	loginsuccess(e) {
 		// console.log(e)
@@ -27,8 +48,8 @@ Page({
 		})
 	},
 	//?用户信息获取失败
-  loginfail () {
-    //?模态框提示用户
+	loginfail() {
+		//?模态框提示用户
 		wx.showModal({
 			title: 'Warn',
 			content: 'no授权，no发布',
