@@ -136,8 +136,14 @@ Page({
 						fail: () => {},
 						complete: () => {
 							setTimeout(() => {
-								//返回博客页面并刷新
+								//?返回博客页面并刷新,子界面调用父功能
 								wx.navigateBack()
+								//?取到当前小程序界面
+								const pages = getCurrentPages()
+								// console.log(pages)
+								//?取到上一个界面
+								const prevPage = pages[pages.length - 2]
+								prevPage.onPullDownRefresh()
 							}, 500)
 						},
 					})

@@ -44,12 +44,20 @@ Page({
 				wx.stopPullDownRefresh()
 			})
 	},
+	//进入评论区
+	goComment(e) {
+		wx.navigateTo({
+			url: `../../pages/blog-comment/blog-comment?blogid=${e.target.dataset.blogid}`,
+		})
+	},
+	//下拉
 	onPullDownRefresh() {
 		this.setData({
 			blogList: [],
 		})
 		this.loadBlogList()
 	},
+	//上滑
 	onReachBottom() {
 		this.loadBlogList(this.data.blogList.length)
 	},

@@ -28,5 +28,13 @@ Component({
 	/**
 	 * 组件的方法列表
 	 */
-	methods: {},
+	methods: {
+		onPreviewImage(e) {
+			const ds = e.target.dataset
+			wx.previewImage({
+				current: ds.imgsrc,
+				urls: ds.imgs,
+			})
+		},
+	},
 })
