@@ -132,6 +132,14 @@ Page({
 						image: '../../images/success.png',
 						duration: 1500,
 						mask: true,
+						success: (result) => {},
+						fail: () => {},
+						complete: () => {
+							//返回博客页面并刷新
+							wx.navigateBack({
+								delta: 1,
+							})
+						},
 					})
 				})
 				.catch((err) => {
