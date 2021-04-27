@@ -137,9 +137,7 @@ Page({
 						complete: () => {
 							setTimeout(() => {
 								//返回博客页面并刷新
-								wx.navigateBack({
-									delta: 1,
-								})
+								wx.navigateBack()
 							}, 500)
 						},
 					})

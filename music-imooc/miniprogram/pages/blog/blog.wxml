@@ -10,6 +10,15 @@
 			<blog-search ic="iconfont" sousuo="icon-fabu1"></blog-search>
 		</view>
 	</view>
+	<!-- 博客卡片 -->
+	<view class="blog-list">
+		<block wx:for="{{blogList}}" wx:key="_id">
+			<view class="blog-panel">
+				<blog-card blog="item"></blog-card>
+			</view>
+		</block>
+	</view>
+	<!-- 弹出层 -->
 	<blog-login modalShow="{{modalShow}}" bind:loginsuccess="loginsuccess" bind:loginfail="loginfail"></blog-login>
 </view>
 
