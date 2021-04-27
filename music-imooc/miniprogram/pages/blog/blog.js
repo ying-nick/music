@@ -1,5 +1,6 @@
 // pages/blog/blog.js
 // import {getUserProfile} from "../../utils/userProfile"
+let key=''
 Page({
 	/**
 	 * 页面的初始数据
@@ -30,7 +31,8 @@ Page({
 		wx.cloud
 			.callFunction({
 				name: 'blog',
-				data: {
+        data: {
+          key,
 					start,
 					count,
 					$url: 'list',
@@ -61,7 +63,15 @@ Page({
 	onReachBottom() {
 		this.loadBlogList(this.data.blogList.length)
 	},
+//?搜索
+  onSearch (e) {
+    key = e.detail.key
+    this.setData({
+      blogList:[]
+    })
+    this.loadBlogList()
 
+  },
 	//?用户信息获取成功
 	loginsuccess(e) {
 		// console.log(e)

@@ -7,7 +7,7 @@
 		</view>
 		<view class="search-container">
 			<!-- 传全局样式给组件 -->
-			<blog-search ic="iconfont" sousuo="icon-fabu1"></blog-search>
+			<blog-search ic="iconfont" sousuo="icon-fabu1" bind:search="onSearch"></blog-search>
 		</view>
 	</view>
 	<!-- 博客卡片 -->

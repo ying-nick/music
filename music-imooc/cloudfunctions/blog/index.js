@@ -11,8 +11,20 @@ exports.main = async (event, context) => {
 		event,
 	})
 	app.router('list', async (ctx, next) => {
-		//?分页,每次从第几条开始查询,并排序
+		//?分页,每次从第几条开始查询,并排序,模糊查询
+		let w = {}
+		if (event.key.trim() != '') {
+			//?模糊搜索,正则表达式
+			w = {
+				content: db.RegExp({
+					regexp: event.key,
+					options: 'i',
+				}),
+			}
+		}
+		//?分页,每次从第几条开始查询,并排序,模糊查询
 		ctx.body = await blog
+			.where(w)
 			.skip(event.start)
 			.limit(event.count)
 			.orderBy('createTime', 'desc')
