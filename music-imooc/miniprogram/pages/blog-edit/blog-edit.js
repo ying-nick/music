@@ -99,7 +99,7 @@ Page({
 					filePath: item,
 					success: (res) => {
 						console.log(res)
-						fileIds = [...fileIds, ...res.fileID]
+						fileIds = fileIds.concat(res.fileID)
 						rev()
 					},
 					fail: (err) => {
