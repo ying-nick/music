@@ -4,5 +4,6 @@
 		"blog-login": "/components/login/login",
 		"blog-card": "/components/blog-card/blog-card"
 	},
-	"navigationBarTitleText": "Discover"
+	"navigationBarTitleText": "Discover",
+	"enablePullDownRefresh": true
 }

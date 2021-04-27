@@ -15,7 +15,7 @@ exports.main = async (event, context) => {
 		ctx.body = await blog
 			.skip(event.start)
 			.limit(event.count)
-			.orderBy('creatTime', 'desc')
+			.orderBy('createTime', 'desc')
 			.get()
 			.then((res) => {
 				return res.data

@@ -22,21 +22,36 @@ Page({
 		})
 	},
 	//加载博客列表
-	loadBlogList() {
+	loadBlogList(start = 0, count = 10) {
+		wx.showLoading({
+			title: 'がんばって',
+			mask: true,
+		})
 		wx.cloud
 			.callFunction({
 				name: 'blog',
 				data: {
+					start,
+					count,
 					$url: 'list',
-					start: 0,
-					count: 10,
 				},
 			})
 			.then((res) => {
 				this.setData({
 					blogList: this.data.blogList.concat(res.result),
 				})
+				wx.hideLoading()
+				wx.stopPullDownRefresh()
 			})
+	},
+	onPullDownRefresh() {
+		this.setData({
+			blogList: [],
+		})
+		this.loadBlogList()
+	},
+	onReachBottom() {
+		this.loadBlogList(this.data.blogList.length)
 	},
 
 	//?用户信息获取成功
