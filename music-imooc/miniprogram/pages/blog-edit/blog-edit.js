@@ -2,6 +2,10 @@
 //输入文字最大的个数
 const maxNum = 140
 const maxImg = 9
+let content = ''
+let userInfo = {}
+//初始化云数据库
+const db = wx.cloud.database()
 Page({
 	/**
 	 * 页面的初始数据
@@ -19,6 +23,7 @@ Page({
 	 */
 	onLoad: function (options) {
 		// console.log(options)
+		userInfo = options
 	},
 	onInput(e) {
 		// console.log(e.detail.value)
@@ -29,6 +34,7 @@ Page({
 		this.setData({
 			wordsNum,
 		})
+		content = e.detail.value
 	},
 	onFocus(e) {
 		this.setData({
@@ -62,24 +68,56 @@ Page({
 		//?发布，云数据库
 		//?数据库：内容，图片fileId，openId，昵称，头像，时间
 		//?图片->云存储fileId，云文件ID
+		if (content.trim() === '') {
+			wx.showModal({
+				title: 'Boom',
+				content: '说点噻，弄啥嘞',
+				showCancel: true,
+				cancelText: '取消',
+				cancelColor: '#000000',
+				confirmText: '确定',
+				confirmColor: '#3CC51F',
+			})
+			return
+		}
+		let promiseArr = []
+		//fileId
+		let fileIds = []
 		//图片上传
 		for (let i = 0; i < this.data.imgs.length; i++) {
-			//文件扩展名
-			let item = this.data.imgs[i]
-			let suffix = /\.\w+$/.exec(item)[0]
-			wx.cloud.uploadFile({
-				cloudPath:
-					'blog/' + Date.now() + '-' + Math.random() * 1000000 + suffix,
-				filePath: item,
-				success: (res) => {
-					console.log(res)
-				},
-				fail: (err) => {
-					console.log(err)
+			let p = new Promise((rev, rej) => {
+				//文件扩展名
+				let item = this.data.imgs[i]
+				let suffix = /\.\w+$/.exec(item)[0]
+				wx.cloud.uploadFile({
+					cloudPath:
+						'blog/' + Date.now() + '-' + Math.random() * 1000000 + suffix,
+					filePath: item,
+					success: (res) => {
+						console.log(res)
+						fileIds = [...fileIds, ...res.fileID]
+						rev()
+					},
+					fail: (err) => {
+						console.log(err)
+
+						rej(err)
+					},
+				})
+			})
+			promiseArr.push(p)
+		}
+		//存入云数据库
+		Promise.all(promiseArr).then((res) => {
+			db.collection('blog').add({
+				data: {
+					...userInfo,
+					content,
+					img: fileIds,
+					createTime: db.serverDate(), //获取服务端时间
 				},
 			})
-    }
-    //存入云数据库
+		})
 	},
 	chooseImg() {
 		let max = maxImg - this.data.imgs.length
