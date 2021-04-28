@@ -2,7 +2,8 @@
 	"usingComponents": {
 		"blog-search": "/components/search/search",
 		"blog-login": "/components/login/login",
-		"blog-card": "/components/blog-card/blog-card"
+		"blog-card": "/components/blog-card/blog-card",
+		"blog-ctrl": "/components/blog-ctrl/blog-ctrl"
 	},
 	"navigationBarTitleText": "Discover",
 	"enablePullDownRefresh": true

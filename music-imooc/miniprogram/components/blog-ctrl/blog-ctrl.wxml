@@ -1,0 +1,20 @@
+<!--components/blog-ctrl/blog-ctrl.wxml-->
+<view class="ctrl">
+	<view class="ctrl-item" bind:tap="subscribeMsg">
+		<i class="iconfont icon-pinglun icon"></i>
+		<text class="item">评论</text>
+	</view>
+	<view class="ctrl-item share">
+		<button
+		 open-type="share"
+		 data-blogid="{{blogId}}"
+		 data-blog="{{blog}}"
+		 class="share-btn"
+		 hover-class="share-hover"
+		>
+			<i class="iconfont icon-fenxiang icon"></i>
+			<text class="item">分享</text>
+		</button>
+	</view>
+</view>
+
