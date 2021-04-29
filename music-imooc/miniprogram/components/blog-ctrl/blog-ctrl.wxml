@@ -17,8 +17,8 @@
 		</button>
 	</view>
 </view>
-<login modalShow="{{loginShow}}" bind:loginsuccess="onLoginsuccess" bind:loginfail="onLoginfail" />
-<bottom-modal modalShow="{{modalShow}}">
+<blog-login modalShow="{{loginShow}}" bind:loginsuccess="onLoginsuccess" bind:loginfail="onLoginfail"></blog-login>
+<blog-modal modalShow="{{modalShow}}">
 	<view slot="modal-content">
 		<textarea
 		 bindinput="onInput"
@@ -30,5 +30,5 @@
 		></textarea>
 		<button class="send" form-type="submit" bind:tap="onSend">发送</button>
 	</view>
-</bottom-modal>
+</blog-modal>
 

@@ -1,7 +1,7 @@
 {
-  "component": true,
-  "usingComponents": {
-    "login":"/components/login/login",
-  	"blog-modal": "/components/bottom-modal//bottom-modal"
-  }
+	"component": true,
+	"usingComponents": {
+		"blog-login": "/components/login/login",
+		"blog-modal": "/components/bottom-modal/bottom-modal"
+	}
 }
