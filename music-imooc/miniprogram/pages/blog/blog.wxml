@@ -15,7 +15,12 @@
 		<block wx:for="{{blogList}}" wx:key="_id">
 			<view class="blog-panel">
 				<blog-card blog="{{item}}" data-blogid="{{item._id}}" bind:tap="goComment"></blog-card>
-				<blog-ctrl iconfont="iconfont" icon-pinglun="icon-comment" icon-fenxiang="icon-fenxiang"></blog-ctrl>
+				<blog-ctrl
+				 blogId="{{item._id}}"
+				 iconfont="iconfont"
+				 icon-pinglun="icon-comment"
+				 icon-fenxiang="icon-fenxiang"
+				></blog-ctrl>
 			</view>
 		</block>
 	</view>
