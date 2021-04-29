@@ -26,9 +26,17 @@ Component({
 			})
 		},
 		onLoginsuccess() {
-			this.setData({
-				loginShow: false,
-			})
+			//?setdata的回调
+			this.setData(
+				{
+					loginShow: false,
+				},
+				() => {
+					this.setData({
+						modalShow: true,
+					})
+				}
+			)
 		},
 		onLoginfail() {
 			wx.showModal({
