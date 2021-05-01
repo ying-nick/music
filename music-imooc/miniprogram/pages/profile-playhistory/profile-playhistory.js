@@ -5,7 +5,9 @@ Page({
 	/**
 	 * 页面的初始数据
 	 */
-	data: {},
+	data: {
+		musiclist: [],
+	},
 
 	/**
 	 * 生命周期函数--监听页面加载
@@ -16,7 +18,7 @@ Page({
 		if (playlist.length == 0) {
 			//?判断跳转
 			wx.showModal({
-				title: '还未听歌，赶紧去试试',
+				title: '还未听歌？赶紧去试试',
 				content: '',
 				showCancel: true,
 				cancelText: '取消',
@@ -32,6 +34,10 @@ Page({
 						wx.navigateBack()
 					}
 				},
+			})
+		} else {
+			this.setData({
+				musiclist: playlist,
 			})
 		}
 	},
