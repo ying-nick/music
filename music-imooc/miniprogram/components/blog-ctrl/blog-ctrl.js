@@ -28,11 +28,11 @@ Component({
 	 */
 	methods: {
 		onFocus(e) {
-			console.log(e.detail)
+			// console.log(e.detail)
 			this.setData({
 				foot: e.detail.height,
 			})
-			console.log(this.data.foot)
+			// console.log(this.data.foot)
 		},
 		onBlur() {
 			this.setData({
