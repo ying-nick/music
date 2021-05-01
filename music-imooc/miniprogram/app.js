@@ -13,9 +13,11 @@ App({
 				traceUser: true,
 			})
 		}
-		this.globalData = {
+		;(this.globalData = {
 			playing: -1,
-		}
+			openid: -1,
+		}),
+			this.getOpenId()
 	},
 	//?传递正在播放的音乐id，作为全局变量
 	setPlaying(id) {
@@ -23,5 +25,23 @@ App({
 	},
 	getPlaying() {
 		return this.globalData.playing
+	},
+	//?音乐存储在本地
+	getOpenId() {
+		wx.cloud
+			.callFunction({
+				name: 'login',
+			})
+			.then((res) => {
+				const openid = res.result.openid
+				// console.log(openid)
+				this.globalData.openid = openid
+				// console.log(this.globalData.openid)
+				// console.log(wx.getStorageInfoSync(openid))
+				if (wx.getStorageSync(openid) == '') {
+					// console.log(11111)
+					wx.setStorageSync(openid, [])
+				}
+			})
 	},
 })

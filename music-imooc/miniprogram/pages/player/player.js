@@ -87,6 +87,7 @@ Page({
 						backAudioManager.singer = music.ar[0].name
 						//专辑名
 						backAudioManager.epname = music.al.name
+						this.savePlayHistory()
 					}
 
 					this.setData({
@@ -177,7 +178,7 @@ Page({
 		})
 	},
 	timeUpdate(e) {
-		//?选中子组件,调用子组件方法传参
+		//?选中子组件,直接调用子组件内部方法传参
 		this.selectComponent('.lyric').update(e.detail.curTime)
 	},
 	//系统按键控制播放暂停按钮变化联动
@@ -190,5 +191,26 @@ Page({
 		this.setData({
 			isPlay: false,
 		})
+	},
+	//?保存播放历史
+	savePlayHistory() {
+		//当前正在播放的歌曲对象
+		const music = music_list[nowIndex]
+		const openid = app.globalData.openid
+		const history = wx.getStorageSync(openid)
+		let flg = false
+		for (let i = 0; i < history.length; i++) {
+			if (history[i].id == music.id) {
+				flg = true
+				break
+			}
+		}
+		if (!flg) {
+			history.unshift(music)
+			wx.setStorage({
+				key: openid,
+				data: history,
+			})
+		}
 	},
 })
