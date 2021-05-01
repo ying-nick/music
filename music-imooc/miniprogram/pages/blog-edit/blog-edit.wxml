@@ -6,7 +6,7 @@
 	 placeholder="分享新鲜事..."
 	 bindinput="onInput"
 	 maxlength="140"
-	 auto-focus="{{true}}"
+	 auto-auto-focus="{{true}}"
 	 bindfocus="onFocus"
 	 bindblur="onBlur"
 	></textarea>

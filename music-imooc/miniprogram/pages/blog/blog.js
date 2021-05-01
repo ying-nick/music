@@ -100,5 +100,16 @@ Page({
 				}
 			},
 		})
-	},
+  },
+  	/**
+		 * 用户点击右上角分享
+		 */
+	
+  onShareAppMessage: function (e) {
+    return {
+      title: e.target.dataset.blog.content,
+      path: `/pages/blog-comment/blog-comment?blogId=${e.target.dataset.blog._id}`,
+      // imageUrl:''
+    }
+  },
 })

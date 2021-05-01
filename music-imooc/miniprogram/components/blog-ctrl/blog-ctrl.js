@@ -8,6 +8,7 @@ Component({
 	 */
 	properties: {
 		blogId: String,
+		blog: Object,
 	},
 	externalClasses: ['iconfont', 'icon-pinglun', 'icon-fenxiang'],
 	/**
@@ -19,12 +20,25 @@ Component({
 		// 底部弹出层是否显示
 		modalShow: false,
 		content: '',
+		foot: 0,
 	},
 
 	/**
 	 * 组件的方法列表
 	 */
 	methods: {
+		onFocus(e) {
+			console.log(e.detail)
+			this.setData({
+				foot: e.detail.height,
+			})
+			console.log(this.data.foot)
+		},
+		onBlur() {
+			this.setData({
+				foot: 0,
+			})
+		},
 		onComment() {
 			this.setData({
 				loginShow: true,

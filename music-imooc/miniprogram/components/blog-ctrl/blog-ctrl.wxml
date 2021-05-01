@@ -24,9 +24,12 @@
 		 bindinput="onInput"
 		 name="content"
 		 class="comment-content"
+		 auto-focus="{{true}}"
 		 placeholder="尽情抒发文采..."
 		 value="{{content}}"
 		 fixed="true"
+		 bindfocus="onFocus"
+		 bindblur="onBlur"
 		></textarea>
 		<button
 		 style="width:80px"

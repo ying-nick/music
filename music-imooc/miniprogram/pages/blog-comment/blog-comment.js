@@ -81,5 +81,10 @@ Page({
 	/**
 	 * 用户点击右上角分享
 	 */
-	onShareAppMessage: function () {},
+	onShareAppMessage: function () {
+		return {
+			title: this.data.blog.content,
+			path: `/pages/blog-comment/blog-comment?blogId=${this.data.blog._id}`,
+		}
+	},
 })

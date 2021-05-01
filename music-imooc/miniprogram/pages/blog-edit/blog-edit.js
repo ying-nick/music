@@ -37,6 +37,7 @@ Page({
 		content = e.detail.value
 	},
 	onFocus(e) {
+		// console.log(e.detail)
 		this.setData({
 			foot: e.detail.height,
 		})

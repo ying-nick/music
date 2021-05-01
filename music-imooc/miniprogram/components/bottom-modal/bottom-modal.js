@@ -4,7 +4,7 @@ Component({
 	 * 组件的属性列表
 	 */
 	properties: {
-		modalShow: Boolean,
+    modalShow: Boolean,
 	},
 	options: {
 		//?导入外部样式方式三
