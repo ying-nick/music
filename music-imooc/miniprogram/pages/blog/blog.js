@@ -48,8 +48,9 @@ Page({
 	},
 	//进入评论区
 	goComment(e) {
+		// console.log(e.target.dataset)
 		wx.navigateTo({
-			url: `../../pages/blog-comment/blog-comment?blogid=${e.target.dataset.blogid}`,
+			url: `../../pages/blog-comment/blog-comment?blogId=${e.target.dataset.blogid}`,
 		})
 	},
 	//下拉

@@ -8,7 +8,7 @@ module.exports = (date) => {
 		's+': date.getSeconds(),
 	}
 	if (/(y+)/.test(fmt)) {
-		//将年份替换下来,替换第一个正则
+		//将fmt中yyyy年份替换下来,替换第一个正则
 		fmt = fmt.replace(RegExp.$1, date.getFullYear())
 	}
 	for (let k in o) {
@@ -20,6 +20,6 @@ module.exports = (date) => {
 			)
 		}
 	}
-  // console.log(fmt)
-  return fmt
+	// console.log(fmt)
+	return fmt
 }

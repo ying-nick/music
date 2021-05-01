@@ -116,14 +116,16 @@ Component({
 						fail: () => {},
 						complete: () => {
 							this.setData({
-                modalShow: false,
-                content:''
+								modalShow: false,
+								content: '',
 							})
+							//?父元素刷新评论
+							this.triggerEvent('refreshCommentList')
 						},
 					})
 				})
-    },
-    //?推送模板消息
+		},
+		//?推送模板消息
 		subscribeMsg() {},
 	},
 })

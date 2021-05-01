@@ -17,7 +17,7 @@
 					<text class="comment-nickname">{{item.nickName}}</text>
 				</view>
 				<view class="comment-content">{{item.content}}</view>
-				<view class="comment-time">{{item.createTime}}</view>
+				<view class="comment-time">{{item.creatTime}}</view>
 			</view>
 		</block>
 	</view>
@@ -28,7 +28,7 @@
 	 iconfont="iconfont"
 	 icon-pinglun="icon-pinglun"
 	 icon-fenxiang="icon-fenxiang"
-	 bind:refreshCommentList="_getBlogDetail"
+	 bind:refreshCommentList="getBlogDetail"
 	/>
 </view>
 
