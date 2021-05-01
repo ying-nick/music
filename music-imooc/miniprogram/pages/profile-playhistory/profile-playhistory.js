@@ -14,6 +14,7 @@ Page({
 		const openid = app.globalData.openid
 		const playlist = wx.getStorageSync(openid)
 		if (playlist.length == 0) {
+			//?判断跳转
 			wx.showModal({
 				title: '还未听歌，赶紧去试试',
 				content: '',
