@@ -24,15 +24,13 @@ Page({
 				confirmColor: '#3CC51F',
 				success: (result) => {
 					if (result.confirm) {
-						wx.navigateTo({
+						wx.switchTab({
 							url: '/pages/playlist/playlist',
 						})
 					} else {
 						wx.navigateBack()
 					}
 				},
-				fail: () => {},
-				complete: () => {},
 			})
 		}
 	},
