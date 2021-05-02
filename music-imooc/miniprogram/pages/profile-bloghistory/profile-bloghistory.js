@@ -18,7 +18,7 @@ Page({
 	//?获取自己的博客列表
 	getListByCloudFn() {
 		wx.showLoading({
-			title: '不要急，休息休息一下',
+			title: '客官莫急',
 			mask: true,
 		})
 		wx.cloud
@@ -37,6 +37,12 @@ Page({
 				})
 				wx.hideLoading()
 			})
+	},
+	//点击跳转
+	goComment(e) {
+		wx.navigateTo({
+			url: `../blog-comment/blog-comment?blogId=${e.target.dataset.blogid}`,
+		})
 	},
 	//?通过小程序端去请求数据
 	/* _getListByMiniprogram() {
@@ -66,5 +72,16 @@ Page({
 	 */
 	onReachBottom: function () {
 		this.getListByCloudFn()
+	},
+	/**
+	 * 用户点击右上角分享
+	 */
+
+	onShareAppMessage: function (e) {
+		return {
+			title: e.target.dataset.blog.content,
+			path: `/pages/blog-comment/blog-comment?blogId=${e.target.dataset.blog._id}`,
+			// imageUrl:''
+		}
 	},
 })
