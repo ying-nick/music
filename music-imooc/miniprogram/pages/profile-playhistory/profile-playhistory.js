@@ -27,6 +27,7 @@ Page({
 				confirmColor: '#3CC51F',
 				success: (result) => {
 					if (result.confirm) {
+						//?tab页面跳转
 						wx.switchTab({
 							url: '/pages/playlist/playlist',
 						})
@@ -36,6 +37,8 @@ Page({
 				},
 			})
 		} else {
+			//?storage里面存储的musiclist替换成播放历史的musiclist
+			wx.setStorageSync('musiclist', playlist)
 			this.setData({
 				musiclist: playlist,
 			})

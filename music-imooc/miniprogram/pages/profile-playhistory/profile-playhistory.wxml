@@ -1,2 +1,3 @@
-<!--pages/profile-playhistory/profile-playhistory.wxml-->
-<text>pages/profile-playhistory/profile-playhistory.wxml</text>
+<!-- pages/profile-playhistory/profile-playhistory.wxml -->
+<music-list musicList="{{musiclist}}" musicID="{{curMusic}}"></music-list>
+

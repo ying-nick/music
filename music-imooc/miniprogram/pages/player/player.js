@@ -1,7 +1,7 @@
 // pages/player/player.js
 let music_list = []
 let nowIndex = 0
-//获取全局唯一的北京音频管理器
+//获取全局唯一的背景音频管理器
 var backAudioManager = wx.getBackgroundAudioManager()
 const app = getApp()
 
@@ -63,6 +63,7 @@ Page({
 		this.setData({
 			picUrl: music.al.picUrl,
 		})
+
 		wx.cloud
 			.callFunction({
 				name: 'music',
