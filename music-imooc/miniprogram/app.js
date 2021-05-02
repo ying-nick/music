@@ -1,6 +1,7 @@
 //app.js
 App({
 	onLaunch: function () {
+		this.checkUpdate()
 		if (!wx.cloud) {
 			console.error('请使用 2.2.3 或以上的基础库以使用云能力')
 		} else {
@@ -43,5 +44,33 @@ App({
 					wx.setStorageSync(openid, [])
 				}
 			})
+	},
+	//?版本更新
+	checkUpdate() {
+		const updateManager = wx.getUpdateManager()
+		//检查版本更新
+		updateManager.onCheckForUpdate((res) => {
+			if (res.hasUpdate) {
+				updateManager.onUpdateReady(() => {
+					wx.showModal({
+						title: '更新提示',
+						content: '还在用旧版本哦，是否需要更新',
+						showCancel: true,
+						cancelText: '取消',
+						cancelColor: '#000000',
+						confirmText: '确定',
+						confirmColor: '#3CC51F',
+						success: (result) => {
+							if (result.confirm) {
+								//?应用新版本，并重启
+								updateManager.applyUpdate()
+							}
+						},
+						fail: () => {},
+						complete: () => {},
+					})
+				})
+			}
+		})
 	},
 })
