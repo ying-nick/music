@@ -1,2 +1,16 @@
-<!--pages/profile-bloghistory/profile-bloghistory.wxml-->
-<text>pages/profile-bloghistory/profile-bloghistory.wxml</text>
+<!-- pages/profile-bloghistory/profile-bloghistory.wxml -->
+<view>
+	<block wx:for="{{blogList}}" wx:key="_id">
+		<view class="blog-panel">
+			<blog-card blog="{{item}}" bind:tap="goComment" data-blogid="{{item._id}}" />
+			<blog-ctrl
+			 blogId="{{item._id}}"
+			 blog="{{item}}"
+			 iconfont="iconfont"
+			 icon-pinglun="icon-comment"
+			 icon-fenxiang="icon-fenxiang"
+			/>
+		</view>
+	</block>
+</view>
+

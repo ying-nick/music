@@ -78,8 +78,15 @@ exports.main = async (event, context) => {
 			commentList,
 			detail,
 		}
-	})
-
+  })
+  const wxContext=cloud.getWXContext()
+  app.router('getListByOpenid', async (ctx, next) => {
+   ctx.body=await blog.where({
+    _openid:wxContext.OPENID
+    }).skip(event.start).limit(event.count).orderBy('creatTime', 'desc').get().then(res => {
+    return res.data
+  })
+})
 	//返回服务
 	return app.serve()
 }
