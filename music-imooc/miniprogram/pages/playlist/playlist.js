@@ -1,24 +1,12 @@
 // pages/playlist/playlist.js
+const db = wx.cloud.database()
 const max = 15
 Page({
 	/**
 	 * 页面的初始数据
 	 */
 	data: {
-		swiperImgUrls: [
-			{
-				url:
-					'http://p1.music.126.net/oeH9rlBAj3UNkhOmfog8Hw==/109951164169407335.jpg',
-			},
-			{
-				url:
-					'http://p1.music.126.net/xhWAaHI-SIYP8ZMzL9NOqg==/109951164167032995.jpg',
-			},
-			{
-				url:
-					'http://p1.music.126.net/Yo-FjrJTQ9clkDkuUCTtUg==/109951164169441928.jpg',
-			},
-		],
+		swiperImgUrls: [],
 		playlist: [],
 	},
 
@@ -26,29 +14,9 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
+		this.getSwiper()
 		this.getList()
 	},
-
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {},
-
 	/**
 	 * 页面相关事件处理函数--监听用户下拉动作
 	 */
@@ -57,6 +25,7 @@ Page({
 			playlist: [],
 		})
 		this.getList()
+		this.getSwiper()
 	},
 
 	/**
@@ -65,11 +34,15 @@ Page({
 	onReachBottom: function () {
 		this.getList()
 	},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {},
+	getSwiper() {
+		db.collection('swiper')
+			.get()
+			.then((res) => {
+				this.setData({
+					swiperImgUrls: res.data,
+				})
+			})
+	},
 
 	getList() {
 		wx.showLoading({
@@ -80,8 +53,8 @@ Page({
 				name: 'music',
 				data: {
 					start: this.data.playlist.length,
-          count: max,
-          $url:'playlist'
+					count: max,
+					$url: 'playlist',
 				},
 			})
 			.then((res) => {

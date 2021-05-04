@@ -9,7 +9,7 @@
 		<swiper-item class="" item-id="">
 			<image
 			 class="img"
-			 src="{{item.url}}"
+			 src="{{item.fileid}}"
 			 mode="widthFix"
 			 lazy-load="false"
 			 binderror=""
