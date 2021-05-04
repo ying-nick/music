@@ -99,7 +99,7 @@ Page({
 						'blog/' + Date.now() + '-' + Math.random() * 1000000 + suffix,
 					filePath: item,
 					success: (res) => {
-						console.log(res)
+						// console.log(res)
 						fileIds = fileIds.concat(res.fileID)
 						rev()
 					},
