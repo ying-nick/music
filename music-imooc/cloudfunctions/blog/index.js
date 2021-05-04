@@ -3,7 +3,7 @@ const cloud = require('wx-server-sdk')
 
 cloud.init({
   env: cloud.DYNAMIC_CURRENT_ENV
-})
+}) 
 const TcbRouter = require('tcb-router')
 const db = cloud.database()
 const blog = db.collection('blog')
@@ -38,7 +38,7 @@ exports.main = async (event, context) => {
 	})
 	app.router('detail', async (ctx, next) => {
 		let blogId = event.blogId
-		//通过博客ID查询详情
+		/* //通过博客ID查询详情方法一
 		let detail = await blog
 			.where({
 				_id: blogId,
@@ -79,7 +79,19 @@ exports.main = async (event, context) => {
 		ctx.body = {
 			commentList,
 			detail,
-		}
+    } */
+
+    //?方法二聚合
+    const blog = await db.collection('blog').aggregate().match({
+      _id: blogId
+    }).lookup({
+      from: 'blog-comment',
+      localField: '_id',
+      foreignField: 'blogId',
+      as: 'commentList'
+		}).end()
+		// console.log(blog)
+    ctx.body = blog
 	})
 	const wxContext = cloud.getWXContext()
 	app.router('getListByOpenid', async (ctx, next) => {

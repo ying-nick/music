@@ -34,7 +34,8 @@ Page({
 				},
 			})
 			.then((res) => {
-				let commentList = res.result.commentList.data
+				//方式一
+				/* 	let commentList = res.result.commentList.data
 				for (let i = 0; i < commentList.length; i++) {
 					commentList[i].creatTime = formatTime(
 						new Date(commentList[i].creatTime)
@@ -45,7 +46,22 @@ Page({
 					commentList,
 				})
 				wx.hideLoading()
-				// console.log(res)
+        // console.log(res) */
+				//?方式二聚合
+				const blog = res.result.list[0]
+				let commentList = blog.commentList
+				for (let i = 0, len = commentList.length; i < len; i++) {
+					commentList[i].createTime = formatTime(
+						new Date(commentList[i].createTime)
+					)
+				}
+
+				this.setData({
+					commentList,
+					blog,
+				})
+
+				wx.hideLoading()
 			})
 	},
 
