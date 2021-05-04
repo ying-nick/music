@@ -51,8 +51,8 @@ Page({
 				const blog = res.result.list[0]
 				let commentList = blog.commentList
 				for (let i = 0, len = commentList.length; i < len; i++) {
-					commentList[i].createTime = formatTime(
-						new Date(commentList[i].createTime)
+					commentList[i].creatTime = formatTime(
+						new Date(commentList[i].creatTime)
 					)
 				}
 
