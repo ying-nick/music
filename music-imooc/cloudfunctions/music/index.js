@@ -3,7 +3,9 @@ const cloud = require('wx-server-sdk')
 //tcb路由
 const tcbRouter = require('tcb-router')
 const axios = require('axios')
-cloud.init()
+cloud.init({
+  env: cloud.DYNAMIC_CURRENT_ENV
+})
 const URL = 'https://apis.imooc.com'
 const code = 'icode=078B30EF9E572491'
 // 云函数入口函数
